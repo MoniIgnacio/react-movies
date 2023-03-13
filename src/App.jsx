@@ -42,22 +42,22 @@ function App () {
   const { search, updateSearch, error } = useSearch()
   const { movies, loading, getMovies } = useMovies({ search, sort })
 
-  // const debouncedGetMovies = useCallback(
-  //   debounce(search => {
-  //     console.log('search', search)
-  //     getMovies({ search })
-  //   }, 300)
-  //   , [getMovies]
-  // )
+  const debouncedGetMovies = useCallback(
+    debounce(search => {
+      console.log('search', search)
+      getMovies({ search })
+    }, 300)
+    , [getMovies]
+  )
 
   const handleSubmit = (event) => {
     event.preventDefault()
     getMovies({ search })
   }
 
-  // const handleSort = () => {
-  //   setSort(!sort)
-  // }
+  const handleSort = () => {
+    setSort(!sort)
+  }
 
   const handleChange = (event) => {
     const newSearch = event.target.value
